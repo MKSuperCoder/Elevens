@@ -20,24 +20,27 @@ public class ElevensGame
         IsGameActive = true;
     }
 
-    public void PlayTurn(int index1, int index2)
+    public bool PlayTurn(int index1, int index2)
+{
+    if (!IsGameActive) return false;
+
+    board.SelectCard(index1);
+    board.SelectCard(index2);
+
+    if (board.IsSelectedPairValid())
     {
-        if (!IsGameActive) return;
-
-        board.SelectCard(index1);
-        board.SelectCard(index2);
-
-        if (board.IsSelectedPairValid())
-        {
-            board.ReplaceCards();
-            UpdateGameStatus();
-        }
-        else
-        {
-            Console.WriteLine("Invalid move: selected cards do not add up to 11.");
-            board.SelectedCardIndices.Clear();
-        }
+        board.ReplaceCards();
+        UpdateGameStatus();
+        return true;
     }
+    else
+    {
+        Console.WriteLine("Invalid move: selected cards do not add up to 11.");
+        board.SelectedCardIndices.Clear();
+        return false;
+    }
+}
+
 
     public void QuitGame()
     {
@@ -69,4 +72,9 @@ public class ElevensGame
     }
 
     public int GetWinCount() => winCount;
+    public void DisplayBoard()
+    {
+        board.DisplayBoard();
+    }
+
 }
