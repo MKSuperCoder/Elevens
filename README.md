@@ -1,64 +1,89 @@
-UML
-
 Class: Card
-
 Fields:
--name:string
--num:int
 
-+Card:int
+- name: string
+
+- num: int
+
+Constructor:
+
++ Card(): int
 
 Properties:
-+Num:int
-+Name:string
+
++ Num: int
+
++ Name: string
 
 Methods:
-+selectCard:int
 
-
-
++ selectCard(): int
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 Class: Board
-
 Fields:
--numOfCards: int
--cardsRemaining: int
--Card[9] card
--List<int> selectedCards;
 
-+Board:int
+- numOfCards: int
 
-Properties
-+NumOfCards: int
-+CardsRemaining: int
+- cardsRemaining: int
+
+- card: Card[9]
+
+- selectedCards: List<int>
+
+Constructor:
+
++ Board(): int
+
+Properties:
+
++ NumOfCards: int
+
++ CardsRemaining: int
 
 Methods:
-+replaceCards
-+checkRemainingCards;
 
++ replaceCards()
+
++ checkRemainingCards()
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Class: ElevensGame
 Fields:
--Deck deck;
--Board board
--isGameActive: bool
 
-+ElevensGame: int
+- deck: Deck
+
+- board: Board
+
+- isGameActive: bool
+
+Constructor:
+
++ ElevensGame(): int
 
 Properties:
-+IsGameActive: bool
+
++ IsGameActive: bool
 
 Methods:
-+checkForValidPairs: bool
-+startGame: bool
-+endGame: bool
-+updateGameStatus: bool
 
++ checkForValidPairs(): bool
 
++ startGame(): bool
+
++ endGame(): bool
+
++ updateGameStatus(): bool
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Class: Deck
 Fields:
--List<Card> cards
 
-+Deck
+- cards: List<Card>
+
+Constructor:
+
++ Deck()
 
 Methods:
-+dealCard:int
-+shuffle:int
+
++ dealCard(): int
+
++ shuffle(): int
