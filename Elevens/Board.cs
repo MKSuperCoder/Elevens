@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,17 +62,17 @@ public class Board
         }
         return false;
     }
-    public void DisplayBoard()
-{
-    Console.WriteLine("\nCurrent Board:");
-    for (int i = 0; i < Cards.Length; i++)
-    {
-        var card = Cards[i];
-        if (card != null)
-            Console.WriteLine($"[{i}] {card.Name} ({card.Num})");
-        else
-            Console.WriteLine($"[{i}] Empty");
-    }
-}
 
+    public void DisplayBoard()
+    {
+        Console.WriteLine("\nCurrent Board:");
+        for (int i = 0; i < Cards.Length; i++)
+        {
+            var card = Cards[i];
+            if (card != null)
+                Console.WriteLine($"[{i}] {card.Name} ({card.Num})");
+            else
+                Console.WriteLine($"[{i}] Empty");
+        }
+    }
 }

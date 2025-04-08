@@ -21,25 +21,51 @@ public class ElevensGame
     }
 
     public bool PlayTurn(int index1, int index2)
-{
-    if (!IsGameActive) return false;
-
-    board.SelectCard(index1);
-    board.SelectCard(index2);
-
-    if (board.IsSelectedPairValid())
     {
-        board.ReplaceCards();
-        UpdateGameStatus();
-        return true;
+        if (!IsGameActive)
+        {
+            Console.WriteLine("No game is active.");
+            return false;
+        }
+
+        // Check for win/lose before doing anything
+        if (deck.CardsLeft == 0 && !board.CheckRemainingPairs())
+        {
+            EndGame(true);
+            return false;
+        }
+        else if (!board.CheckRemainingPairs())
+        {
+            EndGame(false);
+            return false;
+        }
+
+        board.SelectCard(index1);
+        board.SelectCard(index2);
+
+        if (board.IsSelectedPairValid())
+        {
+            board.ReplaceCards();
+
+            // Check again after replacing
+            if (deck.CardsLeft == 0 && !board.CheckRemainingPairs())
+            {
+                EndGame(true);
+            }
+            else if (!board.CheckRemainingPairs())
+            {
+                EndGame(false);
+            }
+
+            return true;
+        }
+        else
+        {
+            Console.WriteLine("Invalid move: selected cards do not add up to 11.");
+            board.SelectedCardIndices.Clear();
+            return false;
+        }   
     }
-    else
-    {
-        Console.WriteLine("Invalid move: selected cards do not add up to 11.");
-        board.SelectedCardIndices.Clear();
-        return false;
-    }
-}
 
 
     public void QuitGame()
@@ -48,17 +74,9 @@ public class ElevensGame
         IsGameActive = false;
     }
 
-    public void UpdateGameStatus()
+    private void EndGame(bool won)
     {
-        if (!board.CheckRemainingPairs())
-        {
-            EndGame();
-        }
-    }
-
-    public void EndGame()
-    {
-        if (deck.CardsLeft == 0 && !board.CheckRemainingPairs())
+        if (won)
         {
             Console.WriteLine("You win!");
             winCount++;
@@ -72,9 +90,9 @@ public class ElevensGame
     }
 
     public int GetWinCount() => winCount;
+
     public void DisplayBoard()
     {
         board.DisplayBoard();
     }
-
 }
