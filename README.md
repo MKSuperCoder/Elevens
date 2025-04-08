@@ -1,3 +1,14 @@
+Summary:
+This is an card game where you have to choose cards that add up to 11. 
+Challenge:
+It was hard to write the logic of the game because I'm not familiar with card games. I tried to make it as simple as possible
+
+Instructions:
+1. Download the file onto your computer
+2. Run the main.cs file
+3. A menu will be displayed
+4. Type a number to select options
+
 Update
 - Added a main menu with options
 - When the user chooses "Play Turn", they now stay in that mode until:
