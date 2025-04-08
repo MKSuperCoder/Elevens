@@ -1,5 +1,6 @@
 Summary:
-This is an card game where you have to choose cards that add up to 11. 
+This is a card game where you have to choose cards that add up to 11. 
+
 Challenge:
 It was hard to write the logic of the game because I'm not familiar with card games. I tried to make it as simple as possible
 
